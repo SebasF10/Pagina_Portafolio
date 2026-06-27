@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sebastián Feo Murillo — Junior Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-bracket">&lt;</span>SFM<span class="logo-bracket">/&gt;</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" data-en="Home" data-es="Inicio">Inicio</a></li>
+      <li><a href="#sobre-mi" data-en="About" data-es="Sobre mí">Sobre mí</a></li>
+      <li><a href="#proyectos" data-en="Projects" data-es="Proyectos">Proyectos</a></li>
+      <li><a href="#formacion" data-en="Education" data-es="Formación">Formación</a></li>
+      <li><a href="#experiencia" data-en="Experience" data-es="Experiencia">Experiencia</a></li>
+      <li><a href="#certificados" data-en="Certificates" data-es="Certificados">Certificados</a></li>
+      <li><a href="#contacto" data-en="Contact" data-es="Contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-lang">
+      <button class="lang-btn active" id="btnEs" onclick="setLang('es')">🇪🇸 ES</button>
+      <button class="lang-btn" id="btnEn" onclick="setLang('en')">🇺🇸 EN</button>
+      <a href="https://drive.google.com/file/d/193zlF8DmSikmPJHZ75lvj8MgBTtIC4L5/view?usp=sharing" target="_blank" rel="noopener" class="btn-cv-nav" id="cvDownload" data-en="Download CV" data-es="Descargar CV">↓ CV</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="dot-pulse"></span>
+        <span class="mono" data-en="Available for work" data-es="Disponible para trabajar">Disponible para trabajar</span>
+      </div>
+      <h1 class="hero-name">Sebastián<br /><span class="name-accent">Feo Murillo</span></h1>
+      <p class="hero-title">
+        <span class="mono typing-cursor" id="typingText"></span>
+      </p>
+      <p class="hero-sub" data-en="Passionate about software development, problem-solving and building technology solutions that create real impact." data-es="Apasionado por el desarrollo de software, la resolución de problemas y la creación de soluciones tecnológicas que generan un impacto real.">
+        Apasionado por el desarrollo de software, la resolución de problemas y la creación de soluciones tecnológicas que generan un impacto real.
+      </p>
+      <div class="hero-code-block" aria-hidden="true">
+        <span class="code-line"><span class="kw">const</span> dev <span class="op">=</span> {</span>
+        <span class="code-line">&nbsp;&nbsp;name<span class="op">:</span> <span class="str">"Sebastián Feo"</span>,</span>
+        <span class="code-line">&nbsp;&nbsp;role<span class="op">:</span> <span class="str">"Junior Software Developer"</span>,</span>
+        <span class="code-line">&nbsp;&nbsp;stack<span class="op">:</span> [<span class="str">"Python"</span>, <span class="str">"JS"</span>, <span class="str">"PHP"</span>],</span>
+        <span class="code-line">&nbsp;&nbsp;openToWork<span class="op">:</span> <span class="kw">true</span></span>
+        <span class="code-line">};</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#sobre-mi" class="btn btn-primary" data-en="About me" data-es="Sobre mí">Sobre mí</a>
+        <a href="#proyectos" class="btn btn-ghost" data-en="Projects" data-es="Proyectos">Proyectos</a>
+        <a href="#formacion" class="btn btn-ghost" data-en="Education" data-es="Formación">Formación</a>
+        <a href="#certificados" class="btn btn-ghost" data-en="Certificates" data-es="Certificados">Certificados</a>
+        <a href="#contacto" class="btn btn-ghost" data-en="Contact" data-es="Contacto">Contacto</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span class="mono" data-en="scroll" data-es="scroll">scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SOBRE MÍ ═══════════════ -->
+  <section class="section" id="sobre-mi">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag mono" data-en="// about" data-es="// sobre mí">// sobre mí</span>
+        <h2 data-en="About Me" data-es="Sobre Mí">Sobre Mí</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <div class="photo-frame">
+            <div class="photo-placeholder">
+              <img src="Foto yo.jpeg" alt="Sebastián Feo Murillo" />
+            </div>
+          </div>
+          <div class="photo-deco"></div>
+        </div>
+        <div class="about-text reveal">
+          <p data-en="I'm a software developer in training, currently studying a Technical Degree in Software Development. I have academic training and competitive experience in languages like Python and JavaScript, as well as solid knowledge in web development using HTML, CSS, and PHP. I work with Git and follow agile methodologies like Scrum." data-es="Soy desarrollador de software en formación y actualmente curso un Técnico Laboral en Desarrollo de Software. Poseo formación y experiencia en lenguajes como Python y JavaScript, además de conocimientos sólidos en desarrollo web utilizando HTML, CSS y PHP. Manejo herramientas como Git y trabajo bajo metodologías ágiles como Scrum.">
+            Soy desarrollador de software en formación y actualmente curso un Técnico Laboral en Desarrollo de Software. Poseo formación y experiencia en lenguajes como Python y JavaScript, además de conocimientos sólidos en desarrollo web utilizando HTML, CSS y PHP. Manejo herramientas como Git y trabajo bajo metodologías ágiles como Scrum.
+          </p>
+          <p data-en="I've participated in national programming contests, earning first and third place — sharpening my problem-solving, teamwork, and adaptability skills." data-es="He participado en concursos nacionales de programación, obteniendo el primer y tercer puesto, fortaleciendo mis habilidades para resolver problemas, trabajar en equipo y adaptarme rápidamente a nuevos desafíos.">
+            He participado en concursos nacionales de programación, obteniendo el primer y tercer puesto, fortaleciendo mis habilidades para resolver problemas, trabajar en equipo y adaptarme rápidamente a nuevos desafíos.
+          </p>
+          <p data-en="I'm passionate about constantly learning new technologies and developing solutions that bring real value to people through software." data-es="Me apasiona aprender constantemente nuevas tecnologías y desarrollar soluciones que aporten valor a las personas mediante el software.">
+            Me apasiona aprender constantemente nuevas tecnologías y desarrollar soluciones que aporten valor a las personas mediante el software.
+          </p>
+          <div class="skills-grid">
+            <div class="skill-group">
+              <h4 class="mono" data-en="Frontend" data-es="Frontend">Frontend</h4>
+              <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h4 class="mono" data-en="Backend" data-es="Backend">Backend</h4>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">PHP</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h4 class="mono" data-en="Tools" data-es="Herramientas">Herramientas</h4>
+              <div class="tags">
+                <span class="tag">Git</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">Scrum</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h4 class="mono" data-en="Languages" data-es="Idiomas">Idiomas</h4>
+              <div class="tags">
+                <span class="tag" data-en="Spanish (Native)" data-es="Español (Nativo)">Español (Nativo)</span>
+                <span class="tag" data-en="English (A2)" data-es="Inglés (A2)">Inglés (A2)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROYECTOS ═══════════════ -->
+  <section class="section section-alt" id="proyectos">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag mono" data-en="// projects" data-es="// proyectos">// proyectos</span>
+        <h2 data-en="Projects" data-es="Proyectos">Proyectos</h2>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Proyecto 1 -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <div class="project-num mono">01</div>
+            <div class="project-tags">
+              <span class="tag tag-sm">Python</span>
+              <span class="tag tag-sm">OpenCV</span>
+              <span class="tag tag-sm">Scrum</span>
+            </div>
+          </div>
+          <h3 class="project-name">AEYE System</h3>
+          <div class="project-section">
+            <span class="project-label mono" data-en="Problem" data-es="Problema">Problema</span>
+            <p data-en="The institution needed a secure mechanism to control student entry and exit, avoiding manual records and facilitating identification of unauthorized persons." data-es="La institución necesitaba un mecanismo que permitiera controlar de manera segura la entrada y salida de estudiantes, evitando registros manuales y facilitando la identificación de personas no autorizadas.">
+              La institución necesitaba un mecanismo que permitiera controlar de manera segura la entrada y salida de estudiantes, evitando registros manuales y facilitando la identificación de personas no autorizadas.
+            </p>
+          </div>
+          <div class="project-section">
+            <span class="project-label mono" data-en="Solution" data-es="Solución">Solución</span>
+            <p data-en="A facial recognition system that automatically identifies registered students, logging name, date, time, and recognition status. Unknown individuals are flagged and logged in an admin interface." data-es="Sistema de reconocimiento facial que identifica automáticamente a estudiantes registrados, almacenando nombre, fecha, hora y estado. Las personas desconocidas son marcadas y registradas en una interfaz administrativa.">
+              Sistema de reconocimiento facial que identifica automáticamente a estudiantes registrados, almacenando nombre, fecha, hora y estado. Las personas desconocidas son marcadas y registradas en una interfaz administrativa.
+            </p>
+          </div>
+          <div class="project-role">
+            <span class="mono role-label" data-en="Role" data-es="Rol">Rol:</span>
+            <span class="tag tag-accent" data-en="Scrum Master" data-es="Scrum Master">Scrum Master</span>
+          </div>
+          <a href="https://github.com/achinti24/concurso-eye_system.git" target="_blank" rel="noopener" class="btn btn-project" data-en="View Repository →" data-es="Ver repositorio →">Ver repositorio →</a>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <div class="project-num mono">02</div>
+            <div class="project-tags">
+              <span class="tag tag-sm">HTML</span>
+              <span class="tag tag-sm">CSS</span>
+              <span class="tag tag-sm">JavaScript</span>
+              <span class="tag tag-sm">PHP</span>
+            </div>
+          </div>
+          <h3 class="project-name">LUDIK</h3>
+          <div class="project-section">
+            <span class="project-label mono" data-en="Problem" data-es="Problema">Problema</span>
+            <p data-en="Colegio San José de Guanentá lacked specialized technology tools for adapting content, tracking students with diverse educational needs, and enabling efficient communication between teachers, families, and students." data-es="El Colegio San José de Guanentá carecía de herramientas tecnológicas especializadas para adaptar contenidos, hacer seguimiento personalizado a estudiantes con necesidades educativas diversas y facilitar la comunicación entre docentes, familias y estudiantes.">
+              El Colegio San José de Guanentá carecía de herramientas tecnológicas especializadas para adaptar contenidos, hacer seguimiento personalizado a estudiantes con necesidades educativas diversas y facilitar la comunicación entre docentes, familias y estudiantes.
+            </p>
+          </div>
+          <div class="project-section">
+            <span class="project-label mono" data-en="Solution" data-es="Solución">Solución</span>
+            <p data-en="A platform that manages students with diverse educational needs through inclusion-focused tools, academic progress tracking, and community-wide communication between all educational stakeholders." data-es="Plataforma que gestiona estudiantes con necesidades educativas diversas mediante herramientas de inclusión, seguimiento del progreso académico y comunicación entre todos los integrantes de la comunidad educativa.">
+              Plataforma que gestiona estudiantes con necesidades educativas diversas mediante herramientas de inclusión, seguimiento del progreso académico y comunicación entre todos los integrantes de la comunidad educativa.
+            </p>
+          </div>
+          <div class="project-role">
+            <span class="mono role-label" data-en="Role" data-es="Rol">Rol:</span>
+            <span class="tag tag-accent" data-en="Scrum Master + Frontend" data-es="Scrum Master + Frontend">Scrum Master + Frontend</span>
+          </div>
+          <a href="https://github.com/SebasF10/LUDIK.git" target="_blank" rel="noopener" class="btn btn-project" data-en="View Repository →" data-es="Ver repositorio →">Ver repositorio →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FORMACIÓN ═══════════════ -->
+  <section class="section" id="formacion">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag mono" data-en="// education" data-es="// formación">// formación</span>
+        <h2 data-en="Education" data-es="Formación Académica">Formación Académica</h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year mono">2020</div>
+          <div class="timeline-content">
+            <h3 data-en="Basic Python Course" data-es="Curso en Python Básico">Curso en Python Básico</h3>
+            <span class="timeline-org">Koodland</span>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year mono">2021</div>
+          <div class="timeline-content">
+            <h3 data-en="Python Pro Course" data-es="Curso en Python Pro">Curso en Python Pro</h3>
+            <span class="timeline-org">Koodland</span>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year mono">2025</div>
+          <div class="timeline-content">
+            <h3 data-en="Technical Baccalaureate in Systems" data-es="Bachiller Técnico en Sistemas">Bachiller Técnico en Sistemas</h3>
+            <span class="timeline-org">Colegio San José de Guanentá — San Gil, Santander</span>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot timeline-dot-active"></div>
+          <div class="timeline-year mono">2026</div>
+          <div class="timeline-content">
+            <h3 data-en="Labor Technical Degree in Software Development" data-es="Técnico Laboral en Desarrollo de Software">Técnico Laboral en Desarrollo de Software</h3>
+            <span class="timeline-org">Campusland</span>
+            <span class="badge-active" data-en="In progress" data-es="En desarrollo">En desarrollo</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EXPERIENCIA ═══════════════ -->
+  <section class="section section-alt" id="experiencia">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag mono" data-en="// experience" data-es="// experiencia">// experiencia</span>
+        <h2 data-en="Experience" data-es="Experiencia">Experiencia</h2>
+      </div>
+      <div class="exp-grid">
+
+        <div class="exp-card reveal">
+          <div class="exp-icon">⚙️</div>
+          <h3 data-en="Scrum Master" data-es="Scrum Master">Scrum Master</h3>
+          <ul>
+            <li data-en="Development team coordination" data-es="Coordinación del equipo de desarrollo">Coordinación del equipo de desarrollo</li>
+            <li data-en="Sprint organization" data-es="Organización de Sprint">Organización de Sprint</li>
+            <li data-en="Project tracking and follow-up" data-es="Seguimiento del proyecto">Seguimiento del proyecto</li>
+            <li data-en="Activity planning" data-es="Planeación de actividades">Planeación de actividades</li>
+            <li data-en="Problem resolution" data-es="Resolución de problemas">Resolución de problemas</li>
+          </ul>
+        </div>
+
+        <div class="exp-card reveal">
+          <div class="exp-icon">🖥️</div>
+          <h3 data-en="Frontend Developer" data-es="Frontend Developer">Frontend Developer</h3>
+          <p data-en="Participation in interface development using HTML, CSS, and JavaScript — applying responsive design principles and modern web development practices." data-es="Participación en el desarrollo de interfaces utilizando HTML, CSS y JavaScript, aplicando principios de diseño responsive y desarrollo web moderno.">
+            Participación en el desarrollo de interfaces utilizando HTML, CSS y JavaScript, aplicando principios de diseño responsive y desarrollo web moderno.
+          </p>
+          <div class="tags" style="margin-top:1rem;">
+            <span class="tag tag-sm">Python</span>
+            <span class="tag tag-sm">HTML</span>
+            <span class="tag tag-sm">CSS</span>
+            <span class="tag tag-sm">JavaScript</span>
+            <span class="tag tag-sm">PHP</span>
+            <span class="tag tag-sm">Git</span>
+            <span class="tag tag-sm">GitHub</span>
+            <span class="tag tag-sm">Scrum</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CERTIFICADOS ═══════════════ -->
+  <section class="section" id="certificados">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag mono" data-en="// certificates" data-es="// certificados">// certificados</span>
+        <h2 data-en="Certificates" data-es="Certificados">Certificados</h2>
+      </div>
+      <div class="certs-grid">
+
+        <div class="cert-card reveal">
+          <div class="cert-icon mono">📜</div>
+          <div class="cert-info">
+            <h3 data-en="Basic Python Course" data-es="Curso en Python Básico">Curso en Python Básico</h3>
+            <span class="cert-org">Koodland</span>
+            <span class="cert-date">2020</span>
+          </div>
+          <div class="cert-btns">
+            <a href="https://drive.google.com/drive/folders/1sQDFa3xRzth64GqN4hNjoInyEtMYawKs?usp=sharing" target="_blank" rel="noopener" class="btn btn-sm" data-en="View" data-es="Ver">Ver</a>
+          </div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-icon mono">📜</div>
+          <div class="cert-info">
+            <h3 data-en="Python Pro Course" data-es="Curso en Python Pro">Curso en Python Pro</h3>
+            <span class="cert-org">Koodland</span>
+            <span class="cert-date">2021</span>
+          </div>
+          <div class="cert-btns">
+            <a href="https://drive.google.com/drive/folders/1sQDFa3xRzth64GqN4hNjoInyEtMYawKs?usp=sharing" target="_blank" rel="noopener" class="btn btn-sm" data-en="View" data-es="Ver">Ver</a>
+          </div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-icon mono">🏆</div>
+          <div class="cert-info">
+            <h3 data-en="1st Place — National Programming Contest" data-es="1er Puesto — Concurso Nacional de Programación">1er Puesto — Concurso Nacional de Programación</h3>
+            <span class="cert-org">Nacional</span>
+          </div>
+          <div class="cert-btns">
+            <a href="https://drive.google.com/drive/folders/1sQDFa3xRzth64GqN4hNjoInyEtMYawKs?usp=sharing" target="_blank" rel="noopener" class="btn btn-sm" data-en="View" data-es="Ver">Ver</a>
+          </div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-icon mono">🥉</div>
+          <div class="cert-info">
+            <h3 data-en="3rd Place — National Programming Contest" data-es="3er Puesto — Concurso Nacional de Programación">3er Puesto — Concurso Nacional de Programación</h3>
+            <span class="cert-org">Nacional</span>
+          </div>
+          <div class="cert-btns">
+            <a href="https://drive.google.com/drive/folders/1sQDFa3xRzth64GqN4hNjoInyEtMYawKs?usp=sharing" target="_blank" rel="noopener" class="btn btn-sm" data-en="View" data-es="Ver">Ver</a>
+          </div>
+        </div>
+
+      </div>
+      <p class="certs-note mono reveal" data-en="// The 'View' buttons open the Drive folder with your certificates" data-es="// Los botones 'Ver' abren la carpeta de Drive con tus certificados">// Los botones 'Ver' abren la carpeta de Drive con tus certificados</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACTO ═══════════════ -->
+  <section class="section section-alt" id="contacto">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag mono" data-en="// contact" data-es="// contacto">// contacto</span>
+        <h2 data-en="Let's Talk?" data-es="¿Hablamos?">¿Hablamos?</h2>
+      </div>
+      <div class="contact-wrapper reveal">
+        <p class="contact-text" data-en="If you want to work with me, learn more about my projects, or simply get in touch — I'll be happy to hear from you." data-es="Si deseas trabajar conmigo, conocer más sobre mis proyectos o simplemente ponerte en contacto, estaré encantado de responderte.">
+          Si deseas trabajar conmigo, conocer más sobre mis proyectos o simplemente ponerte en contacto, estaré encantado de responderte.
+        </p>
+        <p class="contact-name mono">Sebastián Feo Murillo</p>
+        <div class="contact-btns">
+          <a href="mailto:sebastian.f.murillo@gmail.com" class="btn btn-contact">
+            <span class="btn-icon">📧</span>
+            <span data-en="Email" data-es="Correo">Correo</span>
+          </a>
+          <a href="https://github.com/SebasF10" target="_blank" rel="noopener" class="btn btn-contact">
+            <span class="btn-icon">💻</span>
+            <span>GitHub</span>
+          </a>
+          <a href="https://wa.me/573175497530" target="_blank" rel="noopener" class="btn btn-contact">
+            <span class="btn-icon">📱</span>
+            <span data-en="WhatsApp" data-es="WhatsApp">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-name">Sebastián Feo Murillo</span>
+        <span class="footer-role mono" data-en="Junior Software Developer" data-es="Junior Software Developer">Junior Software Developer</span>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:sebastian.f.murillo@gmail.com" aria-label="Email">📧</a>
+        <a href="https://github.com/SebasF10" target="_blank" rel="noopener" aria-label="GitHub">💻</a>
+        <a href="https://wa.me/573175497530" target="_blank" rel="noopener" aria-label="WhatsApp">📱</a>
+      </div>
+      <div class="footer-right">
+        <span class="mono" data-en="© 2026 All rights reserved." data-es="© 2026 Todos los derechos reservados.">© 2026 Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-top" id="backTop" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
