@@ -1,189 +1,93 @@
-/* ══════════════════════════════════════════
-   PORTFOLIO — script.js
-   Sebastián Feo Murillo
-══════════════════════════════════════════ */
-
-// ── TYPING EFFECT ──
-const typingPhrases = {
-  es: [
-    'Junior Software Developer',
-    'Scrum Master',
-    'Python Developer',
-    'Frontend Developer'
-  ],
-  en: [
-    'Junior Software Developer',
-    'Scrum Master',
-    'Python Developer',
-    'Frontend Developer'
-  ]
-};
-
-let currentLang = 'es';
+const phrases = ['Junior Software Developer', 'Scrum Master', 'Python Developer', 'Frontend Developer'];
 let phraseIndex = 0;
 let charIndex = 0;
 let deleting = false;
-let typingPaused = false;
 
 function typeEffect() {
   const el = document.getElementById('typingText');
-  if (!el) return;
-
-  const phrases = typingPhrases[currentLang];
   const current = phrases[phraseIndex];
+  let delay = deleting ? 40 : 85;
 
   if (!deleting) {
-    el.textContent = current.substring(0, charIndex + 1);
     charIndex++;
     if (charIndex === current.length) {
       deleting = true;
-      typingPaused = true;
-      setTimeout(() => { typingPaused = false; }, 1800);
+      delay = 1800;
     }
   } else {
-    el.textContent = current.substring(0, charIndex - 1);
     charIndex--;
     if (charIndex === 0) {
       deleting = false;
       phraseIndex = (phraseIndex + 1) % phrases.length;
+      delay = 400;
     }
   }
-
-  const speed = deleting ? 45 : (typingPaused ? 1800 : 80);
-  if (!typingPaused || !deleting) {
-    setTimeout(typeEffect, speed);
-  } else {
-    setTimeout(typeEffect, speed);
-  }
+  el.textContent = current.substring(0, charIndex);
+  setTimeout(typeEffect, delay);
 }
 
-// ── LANGUAGE ──
 function setLang(lang) {
-  currentLang = lang;
-
   document.documentElement.lang = lang;
-
-  // Toggle active button
   document.getElementById('btnEs').classList.toggle('active', lang === 'es');
   document.getElementById('btnEn').classList.toggle('active', lang === 'en');
-
-  // Update all [data-es] / [data-en] elements
-  document.querySelectorAll('[data-es], [data-en]').forEach(el => {
-    const txt = el.getAttribute(`data-${lang}`);
-    if (!txt) return;
-    // Don't overwrite elements that are typed (the typing target)
-    if (el.id === 'typingText') return;
-    // For elements that are links or buttons, update text content
-    if (el.children.length === 0) {
-      el.textContent = txt;
-    }
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const text = el.getAttribute(`data-${lang}`);
+    if (text && el.children.length === 0) el.textContent = text;
   });
+  if (typeof updateThemeLabel === 'function') updateThemeLabel();
 }
 
-// ── NAVBAR SCROLL + ACTIVE ──
+function applyTheme(theme) {
+  const root = document.documentElement;
+  if (theme === 'light') root.setAttribute('data-theme', 'light');
+  else root.removeAttribute('data-theme');
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'light' ? '#f5f7fc' : '#0b1120');
+  updateThemeLabel();
+}
+
+function updateThemeLabel() {
+  const light = document.documentElement.getAttribute('data-theme') === 'light';
+  const es = document.documentElement.lang === 'es';
+  const label = light ? (es ? 'Cambiar a modo oscuro' : 'Switch to dark mode') : (es ? 'Cambiar a modo claro' : 'Switch to light mode');
+  document.getElementById('themeBtn').setAttribute('aria-label', label);
+}
+
+document.getElementById('themeBtn').addEventListener('click', () => {
+  const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  applyTheme(next);
+  try { localStorage.setItem('theme', next); } catch (e) {}
+});
+applyTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+
 const navbar = document.getElementById('navbar');
-const sections = document.querySelectorAll('section[id]');
+const backTop = document.getElementById('backTop');
 const navLinks = document.querySelectorAll('.nav-links a');
 
-function onScroll() {
-  // Scrolled class
-  if (window.scrollY > 40) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  backTop.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
 
-  // Back to top button
-  const btn = document.getElementById('backTop');
-  if (window.scrollY > 400) {
-    btn.classList.add('visible');
-  } else {
-    btn.classList.remove('visible');
-  }
-
-  // Active nav link
-  let current = '';
-  sections.forEach(sec => {
-    const top = sec.offsetTop - 100;
-    if (window.scrollY >= top) {
-      current = sec.getAttribute('id');
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+      });
     }
   });
+}, { rootMargin: '-45% 0px -50% 0px' });
 
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
-  });
-}
+document.querySelectorAll('section[id]').forEach(sec => sectionObserver.observe(sec));
 
-window.addEventListener('scroll', onScroll, { passive: true });
-
-// ── SMOOTH SCROLL for all anchor links ──
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Close mobile menu if open
-      document.getElementById('navLinks').classList.remove('open');
-    }
-  });
-});
-
-// ── MOBILE NAV TOGGLE ──
 document.getElementById('navToggle').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('open');
 });
 
-// ── REVEAL ON SCROLL ──
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
+navLinks.forEach(link => link.addEventListener('click', () => {
+  document.getElementById('navLinks').classList.remove('open');
+}));
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// ── HERO CODE BLOCK: staggered fade-in ──
-function animateCodeBlock() {
-  const lines = document.querySelectorAll('.code-line');
-  lines.forEach((line, i) => {
-    line.style.opacity = '0';
-    line.style.transform = 'translateX(-8px)';
-    line.style.transition = `opacity 0.4s ${0.8 + i * 0.12}s ease, transform 0.4s ${0.8 + i * 0.12}s ease`;
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        line.style.opacity = '1';
-        line.style.transform = 'translateX(0)';
-      }, 50);
-    });
-  });
-}
-
-// ── INIT ──
-window.addEventListener('DOMContentLoaded', () => {
-  typeEffect();
-  animateCodeBlock();
-  onScroll();
-
-  // Fade in hero content
-  const heroContent = document.querySelector('.hero-content');
-  if (heroContent) {
-    heroContent.style.opacity = '0';
-    heroContent.style.transform = 'translateY(20px)';
-    heroContent.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-    setTimeout(() => {
-      heroContent.style.opacity = '1';
-      heroContent.style.transform = 'translateY(0)';
-    }, 100);
-  }
-});
+window.addEventListener('DOMContentLoaded', typeEffect);
